@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fitness Planner - Dashboard</title>
+    <link href="./dist/output.css" rel="stylesheet">
+</head>
+
+<body class="bg-gray-100 text-gray-800 flex flex-col min-h-screen justify-between">
+
+    <!-- Header -->
+    <header class="bg-gray-300 px-6 py-4 flex items-center justify-between">
+        <div class="flex items-center space-x-4">
+            <button class="md:hidden text-2xl font-bold">≡</button>
+            <h1 class="text-xl md:text-2xl font-bold">Fitness Planner</h1>
+        </div>
+
+        <nav class="hidden md:flex space-x-6 font-medium">
+            <a href="index.html" class="hover:underline">Home</a>
+            <a href="dashboard.html" class="hover:underline font-bold">Dashboard</a>
+            <a href="profile.html" class="hover:underline">Profile</a>
+        </nav>
+
+        <a href="profile.html" class="text-2xl cursor-pointer">👤</a>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-6 flex-grow space-y-6">
+
+        <!-- User Welcome -->
+        <div class="flex justify-between items-start">
+            <div>
+                <h2 class="text-2xl md:text-3xl font-bold flex items-center gap-2">
+                    Hello, user <span class="text-lg">👤</span>
+                </h2>
+                <p class="text-sm text-gray-500">date</p>
+            </div>
+        </div>
+
+        <h3 class="text-xl md:text-2xl font-bold text-center md:text-left">Your daily progress</h3>
+
+        <!-- Stats Cards Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div class="bg-gray-300 p-6 rounded-2xl flex flex-col justify-center items-center text-center">
+                <span class="font-bold text-lg">Total calories burned</span>
+            </div>
+            <div class="bg-gray-300 p-6 rounded-2xl flex flex-col justify-center items-center text-center">
+                <span class="font-bold text-lg">Daily Streak</span>
+            </div>
+            <div class="bg-gray-300 p-6 rounded-2xl flex flex-col justify-center items-center text-center">
+                <span class="font-bold text-lg">Total workouts done</span>
+            </div>
+        </div>
+
+        <!-- Charts Section -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <!-- Bar Chart Container -->
+            <div
+                class="md:col-span-2 bg-gray-300 p-8 rounded-2xl h-48 md:h-64 flex flex-col items-center justify-center text-center">
+                <span class="font-bold text-lg">Bar chart</span>
+                <span class="text-xs text-gray-600">Calories burn perday</span>
+            </div>
+
+            <!-- Pie Chart Container & Action -->
+            <div class="flex flex-col gap-4">
+                <div
+                    class="bg-gray-300 p-6 rounded-2xl flex-grow h-32 md:h-auto flex flex-col items-center justify-center text-center">
+                    <span class="font-bold text-lg">Pie chart</span>
+                    <span class="text-xs text-gray-600">Muscle group distribution</span>
+                </div>
+
+                <div class="bg-gray-100 border-2 border-dashed border-gray-300 p-4 rounded-2xl text-center space-y-2">
+                    <h4 class="font-bold">Start now!</h4>
+                    <button
+                        class="bg-gray-400 hover:bg-gray-500 text-black px-4 py-1.5 rounded-full text-xs font-semibold transition">
+                        Browse exercises
+                    </button>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-300 py-4 text-center text-sm font-medium">
+        nav bar
+    </footer>
+
+</body>
+
+</html>

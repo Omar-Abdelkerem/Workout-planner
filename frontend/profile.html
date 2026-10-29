@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fitness Planner - Profile</title>
+    <link href="./dist/output.css" rel="stylesheet">
+</head>
+
+<body class="bg-gray-100 text-gray-800 flex flex-col min-h-screen justify-between">
+
+    <!-- Header -->
+    <header class="bg-gray-300 px-6 py-4 flex items-center justify-between">
+        <div class="flex items-center space-x-4">
+            <button class="md:hidden text-2xl font-bold">≡</button>
+            <h1 class="text-xl md:text-2xl font-bold">Fitness Planner</h1>
+        </div>
+
+        <nav class="hidden md:flex space-x-6 font-medium">
+            <a href="index.html" class="hover:underline">Home</a>
+            <a href="dashboard.html" class="hover:underline">Dashboard</a>
+            <a href="profile.html" class="hover:underline font-bold">Profile</a>
+        </nav>
+
+        <div class="text-2xl cursor-pointer">👤</div>
+    </header>
+
+    <!-- Main Profile Content -->
+    <main class="container mx-auto px-4 py-6 flex-grow space-y-6">
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+            <!-- Left Column: User Card & Member Since -->
+            <div class="space-y-6">
+                <!-- User Info Card -->
+                <div class="bg-gray-300 p-6 rounded-3xl relative space-y-6">
+                    <button class="absolute top-4 right-4 text-lg">✏️</button>
+
+                    <div class="flex items-center space-x-4">
+                        <div class="w-16 h-16 bg-gray-400 rounded-full flex items-center justify-center text-3xl">👤
+                        </div>
+                        <div>
+                            <h2 class="text-xl font-bold">Hello, user</h2>
+                            <p class="text-xs text-gray-600">date</p>
+                        </div>
+                    </div>
+
+                    <!-- Body Stats -->
+                    <div
+                        class="grid grid-cols-4 gap-2 text-center text-sm font-semibold py-2 border-t border-b border-gray-400">
+                        <div>BMI</div>
+                        <div>Age</div>
+                        <div>Weight</div>
+                        <div>Height</div>
+                    </div>
+
+                    <!-- Log out Button -->
+                    <button
+                        class="w-full bg-gray-400 hover:bg-gray-500 text-black py-2 rounded-full font-bold transition">
+                        Log out
+                    </button>
+                </div>
+
+                <!-- Member Since Card -->
+                <div class="bg-gray-400 p-6 rounded-3xl h-40 flex flex-col justify-start">
+                    <h3 class="font-bold border-b border-gray-500 pb-2">Member since</h3>
+                </div>
+            </div>
+
+            <!-- Right Column: Workout History & Achievements -->
+            <div class="space-y-6">
+                <!-- Workout History Card -->
+                <div class="bg-gray-400 p-6 rounded-3xl h-64 flex flex-col justify-between">
+                    <div>
+                        <h3 class="font-bold text-center border-b border-gray-500 pb-2 mb-4">Workout History</h3>
+                        <div class="flex justify-between items-center text-sm">
+                            <div>
+                                <p class="font-semibold">Leg Day</p>
+                                <p class="text-xs text-gray-700">45 min · 320 cal</p>
+                            </div>
+                            <div class="text-right text-xs">
+                                <p class="font-bold">20 oct</p>
+                                <p class="text-gray-700">Tuesday</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Achievements Card -->
+                <div class="bg-gray-400 p-6 rounded-3xl h-40 flex items-center justify-center">
+                    <h3 class="font-bold text-lg">Achievements</h3>
+                </div>
+            </div>
+
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-300 py-4 text-center text-sm font-medium">
+        nav bar
+    </footer>
+
+</body>
+
+</html>

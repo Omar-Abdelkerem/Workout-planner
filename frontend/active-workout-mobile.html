@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fitness Planner - Active Workout Tracker (Mobile)</title>
+    <link href="./dist/output.css" rel="stylesheet">
+</head>
+
+<body class="bg-gray-100 text-gray-900 flex flex-col min-h-screen justify-between pb-24">
+
+    <!-- Skip to main content link (WCAG AA requirement) -->
+    <a href="#main-content"
+        class="sr-only focus:not-sr-only focus:absolute focus:top-3 focus:left-3 focus:z-50 focus:px-4 focus:py-2 focus:bg-gray-900 focus:text-white focus:font-bold focus:rounded-full focus:ring-2 focus:ring-black focus:outline-none">
+        Skip to main content
+    </a>
+
+    <!-- Sticky Mobile Top Bar (Elapsed timer + Quick finish) -->
+    <header class="bg-gray-300 px-4 py-2.5 flex items-center justify-between sticky top-0 z-40 shadow-sm border-b border-gray-400">
+        <div class="flex items-center space-x-2">
+            <button class="text-2xl font-bold p-1 min-h-[44px] min-w-[44px] inline-flex items-center justify-center rounded-lg hover:bg-gray-400 focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-900"
+                aria-expanded="false" aria-controls="mobile-nav" aria-label="Toggle navigation menu">
+                ≡
+            </button>
+            <div>
+                <span class="block text-xs font-bold text-gray-700">Elapsed</span>
+                <div role="timer" aria-live="polite" aria-label="Workout elapsed time"
+                    class="text-base font-black text-gray-900 font-mono leading-none">
+                    00:42:18
+                </div>
+            </div>
+        </div>
+
+        <div class="flex items-center space-x-2">
+            <a href="active-workout.html"
+                class="bg-gray-400 hover:bg-gray-500 text-black px-2.5 py-1.5 rounded-full font-semibold text-xs min-h-[44px] inline-flex items-center focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-900">
+                🖥️ Desktop
+            </a>
+            <button type="button"
+                class="bg-gray-800 hover:bg-gray-900 text-white px-3.5 py-1.5 rounded-full font-bold text-xs min-h-[44px] inline-flex items-center justify-center focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-900">
+                Finish
+            </button>
+        </div>
+    </header>
+
+    <!-- Mobile Navigation Drawer -->
+    <nav id="mobile-nav" aria-label="Mobile Navigation Drawer" class="hidden bg-gray-200 border-b border-gray-400 p-4 space-y-2">
+        <a href="index.html" class="block py-2.5 px-3 rounded-lg font-medium text-gray-900 hover:bg-gray-300 min-h-[44px] flex items-center focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-900">Home</a>
+        <a href="dashboard.html" class="block py-2.5 px-3 rounded-lg font-medium text-gray-900 hover:bg-gray-300 min-h-[44px] flex items-center focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-900">Dashboard</a>
+        <a href="routine-builder-mobile.html" class="block py-2.5 px-3 rounded-lg font-medium text-gray-900 hover:bg-gray-300 min-h-[44px] flex items-center focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-900">Routine Builder</a>
+        <a href="active-workout-mobile.html" class="block py-2.5 px-3 rounded-lg font-bold text-black bg-gray-300 min-h-[44px] flex items-center focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-900" aria-current="page">Active Workout</a>
+        <a href="profile.html" class="block py-2.5 px-3 rounded-lg font-medium text-gray-900 hover:bg-gray-300 min-h-[44px] flex items-center focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-900">Profile</a>
+    </nav>
+
+    <!-- Main Mobile Content (390px centered container) -->
+    <main id="main-content" class="w-full max-w-[390px] mx-auto px-4 py-4 space-y-5 flex-grow">
+
+        <!-- Routine Title Section -->
+        <section class="space-y-1 pb-1 border-b border-gray-300">
+            <div class="flex items-center gap-1.5">
+                <span class="text-[10px] font-bold bg-gray-800 text-white px-2 py-0.5 rounded-full">LIVE WORKOUT</span>
+                <span class="text-xs font-bold text-gray-700">Monday Push Split</span>
+            </div>
+            <h1 class="text-xl font-bold text-gray-900">Push Day Hypertrophy</h1>
+            <p class="text-xs text-gray-700">Tap checkboxes as you complete each set.</p>
+        </section>
+
+        <!-- Mobile Rest Timer Card (Large countdown & touch controls) -->
+        <section aria-labelledby="m-rest-title" class="bg-gray-300 p-4 rounded-3xl border border-gray-400 space-y-3 shadow-sm text-center">
+            <div class="flex items-center justify-between border-b border-gray-400 pb-1.5">
+                <h2 id="m-rest-title" class="text-xs font-bold text-gray-800 uppercase tracking-wide">
+                    Rest Timer
+                </h2>
+                <span class="text-[10px] font-bold bg-gray-400 text-black px-2 py-0.5 rounded-full">Active</span>
+            </div>
+
+            <!-- Big Countdown -->
+            <div role="timer" aria-live="polite" aria-label="Rest timer countdown"
+                class="text-4xl font-black text-gray-900 font-mono tracking-tight">
+                01:30
+            </div>
+
+            <!-- Controls: 44px min tap targets -->
+            <div class="grid grid-cols-3 gap-2 pt-1">
+                <button type="button" aria-label="Subtract 15 seconds from rest timer"
+                    class="bg-gray-400 hover:bg-gray-500 text-black py-2 rounded-full font-bold text-xs min-h-[44px] inline-flex items-center justify-center focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-900">
+                    - 15s
+                </button>
+                <button type="button" aria-label="Add 15 seconds to rest timer"
+                    class="bg-gray-400 hover:bg-gray-500 text-black py-2 rounded-full font-bold text-xs min-h-[44px] inline-flex items-center justify-center focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-900">
+                    + 15s
+                </button>
+                <button type="button"
+                    class="bg-gray-800 hover:bg-gray-900 text-white py-2 rounded-full font-bold text-xs min-h-[44px] inline-flex items-center justify-center focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-900">
+                    Skip
+                </button>
+            </div>
+        </section>
+
+        <!-- Summary Metrics (Stacked / 2-column on mobile) -->
+        <section aria-labelledby="m-summary-title" class="space-y-2">
+            <h2 id="m-summary-title" class="text-xs font-bold uppercase tracking-wider text-gray-700">
+                Session Stats
+            </h2>
+            <div class="grid grid-cols-2 gap-3">
+                <div class="bg-gray-300 p-3.5 rounded-2xl text-center">
+                    <span class="text-[11px] font-bold text-gray-700 block">Sets Done</span>
+                    <span class="text-lg font-black text-gray-900">11 / 14</span>
+                </div>
+                <div class="bg-gray-300 p-3.5 rounded-2xl text-center">
+                    <span class="text-[11px] font-bold text-gray-700 block">Volume</span>
+                    <span class="text-lg font-black text-gray-900">8,450 kg</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Exercise 1 Card with Set Table -->
+        <article class="bg-gray-300 p-4 rounded-3xl space-y-3 shadow-sm border border-gray-400">
+            <div class="flex items-center justify-between border-b border-gray-400 pb-2">
+                <div>
+                    <h3 id="m-ex1-title" class="text-sm font-bold text-gray-900">#1 Barbell Bench Press</h3>
+                    <p class="text-[11px] text-gray-700">Chest • 4 sets</p>
+                </div>
+                <span class="text-[10px] font-bold bg-gray-400 text-black px-2 py-0.5 rounded-full">3/4 Done</span>
+            </div>
+
+            <div role="group" aria-labelledby="m-ex1-title" class="overflow-x-auto">
+                <table class="w-full text-left text-xs border-collapse">
+                    <thead>
+                        <tr class="border-b border-gray-400 text-gray-800 uppercase font-bold">
+                            <th scope="col" class="py-2 px-1">Set</th>
+                            <th scope="col" class="py-2 px-1">Prev</th>
+                            <th scope="col" class="py-2 px-1">kg</th>
+                            <th scope="col" class="py-2 px-1">Reps</th>
+                            <th scope="col" class="py-2 px-1 text-center">Done</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-gray-300">
+                        <tr class="bg-gray-100/70">
+                            <th scope="row" class="py-2 px-1 font-bold text-gray-900">1</th>
+                            <td class="py-2 px-1 text-gray-700">80×8</td>
+                            <td class="py-2 px-1">
+                                <label for="m-b-s1-w" class="sr-only">Set 1 Weight</label>
+                                <input type="number" id="m-b-s1-w" name="mBenchS1W" value="82.5" step="0.5"
+                                    class="w-16 bg-white border border-gray-400 rounded-lg py-1 px-1 text-center font-bold text-gray-900 min-h-[44px] focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-900">
+                            </td>
+                            <td class="py-2 px-1">
+                                <label for="m-b-s1-r" class="sr-only">Set 1 Reps</label>
+                                <input type="number" id="m-b-s1-r" name="mBenchS1R" value="8"
+                                    class="w-12 bg-white border border-gray-400 rounded-lg py-1 px-1 text-center font-bold text-gray-900 min-h-[44px] focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-900">
+                            </td>
+                            <td class="py-2 px-1 text-center">
+                                <label for="m-b-s1-d" class="sr-only">Set 1 Complete</label>
+                                <input type="checkbox" id="m-b-s1-d" name="mBenchS1D" checked
+                                    class="w-6 h-6 rounded cursor-pointer min-h-[44px] min-w-[44px] focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-900">
+                            </td>
+                        </tr>
+                        <tr class="bg-gray-100/70">
+                            <th scope="row" class="py-2 px-1 font-bold text-gray-900">2</th>
+                            <td class="py-2 px-1 text-gray-700">80×8</td>
+                            <td class="py-2 px-1">
+                                <label for="m-b-s2-w" class="sr-only">Set 2 Weight</label>
+                                <input type="number" id="m-b-s2-w" name="mBenchS2W" value="82.5" step="0.5"
+                                    class="w-16 bg-white border border-gray-400 rounded-lg py-1 px-1 text-center font-bold text-gray-900 min-h-[44px] focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-900">
+                            </td>
+                            <td class="py-2 px-1">
+                                <label for="m-b-s2-r" class="sr-only">Set 2 Reps</label>
+                                <input type="number" id="m-b-s2-r" name="mBenchS2R" value="8"
+                                    class="w-12 bg-white border border-gray-400 rounded-lg py-1 px-1 text-center font-bold text-gray-900 min-h-[44px] focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-900">
+                            </td>
+                            <td class="py-2 px-1 text-center">
+                                <label for="m-b-s2-d" class="sr-only">Set 2 Complete</label>
+                                <input type="checkbox" id="m-b-s2-d" name="mBenchS2D" checked
+                                    class="w-6 h-6 rounded cursor-pointer min-h-[44px] min-w-[44px] focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-900">
+                            </td>
+                        </tr>
+                        <tr class="bg-gray-100/70">
+                            <th scope="row" class="py-2 px-1 font-bold text-gray-900">3</th>
+                            <td class="py-2 px-1 text-gray-700">80×7</td>
+                            <td class="py-2 px-1">
+                                <label for="m-b-s3-w" class="sr-only">Set 3 Weight</label>
+                                <input type="number" id="m-b-s3-w" name="mBenchS3W" value="82.5" step="0.5"
+                                    class="w-16 bg-white border border-gray-400 rounded-lg py-1 px-1 text-center font-bold text-gray-900 min-h-[44px] focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-900">
+                            </td>
+                            <td class="py-2 px-1">
+                                <label for="m-b-s3-r" class="sr-only">Set 3 Reps</label>
+                                <input type="number" id="m-b-s3-r" name="mBenchS3R" value="8"
+                                    class="w-12 bg-white border border-gray-400 rounded-lg py-1 px-1 text-center font-bold text-gray-900 min-h-[44px] focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-900">
+                            </td>
+                            <td class="py-2 px-1 text-center">
+                                <label for="m-b-s3-d" class="sr-only">Set 3 Complete</label>
+                                <input type="checkbox" id="m-b-s3-d" name="mBenchS3D" checked
+                                    class="w-6 h-6 rounded cursor-pointer min-h-[44px] min-w-[44px] focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-900">
+                            </td>
+                        </tr>
+                        <tr class="bg-white">
+                            <th scope="row" class="py-2 px-1 font-bold text-gray-900">4</th>
+                            <td class="py-2 px-1 text-gray-700">80×6</td>
+                            <td class="py-2 px-1">
+                                <label for="m-b-s4-w" class="sr-only">Set 4 Weight</label>
+                                <input type="number" id="m-b-s4-w" name="mBenchS4W" value="82.5" step="0.5"
+                                    class="w-16 bg-white border border-gray-400 rounded-lg py-1 px-1 text-center font-bold text-gray-900 min-h-[44px] focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-900">
+                            </td>
+                            <td class="py-2 px-1">
+                                <label for="m-b-s4-r" class="sr-only">Set 4 Reps</label>
+                                <input type="number" id="m-b-s4-r" name="mBenchS4R" value="8"
+                                    class="w-12 bg-white border border-gray-400 rounded-lg py-1 px-1 text-center font-bold text-gray-900 min-h-[44px] focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-900">
+                            </td>
+                            <td class="py-2 px-1 text-center">
+                                <label for="m-b-s4-d" class="sr-only">Set 4 Complete</label>
+                                <input type="checkbox" id="m-b-s4-d" name="mBenchS4D"
+                                    class="w-6 h-6 rounded cursor-pointer min-h-[44px] min-w-[44px] focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-900">
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </article>
+
+        <!-- Exercise 2 Card with Set Table -->
+        <article class="bg-gray-300 p-4 rounded-3xl space-y-3 shadow-sm border border-gray-400">
+            <div class="flex items-center justify-between border-b border-gray-400 pb-2">
+                <div>
+                    <h3 id="m-ex2-title" class="text-sm font-bold text-gray-900">#2 Incline DB Press</h3>
+                    <p class="text-[11px] text-gray-700">Upper Chest • 3 sets</p>
+                </div>
+                <span class="text-[10px] font-bold bg-gray-400 text-black px-2 py-0.5 rounded-full">3/3 Done</span>
+            </div>
+
+            <div role="group" aria-labelledby="m-ex2-title" class="overflow-x-auto">
+                <table class="w-full text-left text-xs border-collapse">
+                    <thead>
+                        <tr class="border-b border-gray-400 text-gray-800 uppercase font-bold">
+                            <th scope="col" class="py-2 px-1">Set</th>
+                            <th scope="col" class="py-2 px-1">Prev</th>
+                            <th scope="col" class="py-2 px-1">kg</th>
+                            <th scope="col" class="py-2 px-1">Reps</th>
+                            <th scope="col" class="py-2 px-1 text-center">Done</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-gray-300">
+                        <tr class="bg-gray-100/70">
+                            <th scope="row" class="py-2 px-1 font-bold text-gray-900">1</th>
+                            <td class="py-2 px-1 text-gray-700">28×10</td>
+                            <td class="py-2 px-1">
+                                <label for="m-i-s1-w" class="sr-only">Set 1 Weight</label>
+                                <input type="number" id="m-i-s1-w" name="mIncS1W" value="30" step="1"
+                                    class="w-16 bg-white border border-gray-400 rounded-lg py-1 px-1 text-center font-bold text-gray-900 min-h-[44px] focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-900">
+                            </td>
+                            <td class="py-2 px-1">
+                                <label for="m-i-s1-r" class="sr-only">Set 1 Reps</label>
+                                <input type="number" id="m-i-s1-r" name="mIncS1R" value="10"
+                                    class="w-12 bg-white border border-gray-400 rounded-lg py-1 px-1 text-center font-bold text-gray-900 min-h-[44px] focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-900">
+                            </td>
+                            <td class="py-2 px-1 text-center">
+                                <label for="m-i-s1-d" class="sr-only">Set 1 Complete</label>
+                                <input type="checkbox" id="m-i-s1-d" name="mIncS1D" checked
+                                    class="w-6 h-6 rounded cursor-pointer min-h-[44px] min-w-[44px] focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-900">
+                            </td>
+                        </tr>
+                        <tr class="bg-gray-100/70">
+                            <th scope="row" class="py-2 px-1 font-bold text-gray-900">2</th>
+                            <td class="py-2 px-1 text-gray-700">28×10</td>
+                            <td class="py-2 px-1">
+                                <label for="m-i-s2-w" class="sr-only">Set 2 Weight</label>
+                                <input type="number" id="m-i-s2-w" name="mIncS2W" value="30" step="1"
+                                    class="w-16 bg-white border border-gray-400 rounded-lg py-1 px-1 text-center font-bold text-gray-900 min-h-[44px] focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-900">
+                            </td>
+                            <td class="py-2 px-1">
+                                <label for="m-i-s2-r" class="sr-only">Set 2 Reps</label>
+                                <input type="number" id="m-i-s2-r" name="mIncS2R" value="10"
+                                    class="w-12 bg-white border border-gray-400 rounded-lg py-1 px-1 text-center font-bold text-gray-900 min-h-[44px] focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-900">
+                            </td>
+                            <td class="py-2 px-1 text-center">
+                                <label for="m-i-s2-d" class="sr-only">Set 2 Complete</label>
+                                <input type="checkbox" id="m-i-s2-d" name="mIncS2D" checked
+                                    class="w-6 h-6 rounded cursor-pointer min-h-[44px] min-w-[44px] focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-900">
+                            </td>
+                        </tr>
+                        <tr class="bg-gray-100/70">
+                            <th scope="row" class="py-2 px-1 font-bold text-gray-900">3</th>
+                            <td class="py-2 px-1 text-gray-700">28×9</td>
+                            <td class="py-2 px-1">
+                                <label for="m-i-s3-w" class="sr-only">Set 3 Weight</label>
+                                <input type="number" id="m-i-s3-w" name="mIncS3W" value="30" step="1"
+                                    class="w-16 bg-white border border-gray-400 rounded-lg py-1 px-1 text-center font-bold text-gray-900 min-h-[44px] focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-900">
+                            </td>
+                            <td class="py-2 px-1">
+                                <label for="m-i-s3-r" class="sr-only">Set 3 Reps</label>
+                                <input type="number" id="m-i-s3-r" name="mIncS3R" value="9"
+                                    class="w-12 bg-white border border-gray-400 rounded-lg py-1 px-1 text-center font-bold text-gray-900 min-h-[44px] focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-900">
+                            </td>
+                            <td class="py-2 px-1 text-center">
+                                <label for="m-i-s3-d" class="sr-only">Set 3 Complete</label>
+                                <input type="checkbox" id="m-i-s3-d" name="mIncS3D" checked
+                                    class="w-6 h-6 rounded cursor-pointer min-h-[44px] min-w-[44px] focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-900">
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </article>
+
+    </main>
+
+    <!-- Mobile Footer -->
+    <footer class="bg-gray-300 py-3 text-center text-xs font-semibold text-gray-800 mb-14">
+        <p>&copy; 2026 FitnessPlanner</p>
+    </footer>
+
+    <!-- Fixed Mobile Bottom Navigation Bar -->
+    <nav aria-label="Mobile Bottom Navigation Bar"
+        class="fixed bottom-0 left-0 right-0 z-50 bg-gray-300 border-t border-gray-400 px-2 py-1 shadow-md">
+        <div class="max-w-[390px] mx-auto grid grid-cols-5 gap-1 text-center">
+            <a href="index.html"
+                class="min-h-[44px] flex flex-col items-center justify-center py-1 text-gray-800 hover:text-black rounded-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-900">
+                <span class="text-sm" aria-hidden="true">🏠</span>
+                <span class="text-[10px] font-semibold mt-0.5">Home</span>
+            </a>
+            <a href="dashboard.html"
+                class="min-h-[44px] flex flex-col items-center justify-center py-1 text-gray-800 hover:text-black rounded-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-900">
+                <span class="text-sm" aria-hidden="true">📊</span>
+                <span class="text-[10px] font-semibold mt-0.5">Dashboard</span>
+            </a>
+            <a href="routine-builder-mobile.html"
+                class="min-h-[44px] flex flex-col items-center justify-center py-1 text-gray-800 hover:text-black rounded-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-900">
+                <span class="text-sm" aria-hidden="true">📝</span>
+                <span class="text-[10px] font-semibold mt-0.5">Routines</span>
+            </a>
+            <a href="active-workout-mobile.html" aria-current="page"
+                class="min-h-[44px] flex flex-col items-center justify-center py-1 text-black font-bold bg-gray-400 rounded-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-900">
+                <span class="text-sm" aria-hidden="true">⏱️</span>
+                <span class="text-[10px] font-bold mt-0.5">Workout</span>
+            </a>
+            <a href="profile.html"
+                class="min-h-[44px] flex flex-col items-center justify-center py-1 text-gray-800 hover:text-black rounded-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-900">
+                <span class="text-sm" aria-hidden="true">👤</span>
+                <span class="text-[10px] font-semibold mt-0.5">Profile</span>
+            </a>
+        </div>
+    </nav>
+
+</body>
+
+</html>

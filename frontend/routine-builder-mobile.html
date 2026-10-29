@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fitness Planner - Routine Builder (Mobile)</title>
+    <link href="./dist/output.css" rel="stylesheet">
+</head>
+
+<body class="bg-gray-100 text-gray-900 flex flex-col min-h-screen justify-between pb-20">
+
+    <!-- Skip to main content link (WCAG AA requirement) -->
+    <a href="#main-content"
+        class="sr-only focus:not-sr-only focus:absolute focus:top-3 focus:left-3 focus:z-50 focus:px-4 focus:py-2 focus:bg-gray-900 focus:text-white focus:font-bold focus:rounded-full focus:ring-2 focus:ring-black focus:outline-none">
+        Skip to main content
+    </a>
+
+    <!-- Mobile Header (matching teammate iPhone 16 mockup) -->
+    <header class="bg-gray-300 px-4 py-3 flex items-center justify-between sticky top-0 z-40 shadow-sm">
+        <div class="flex items-center space-x-3">
+            <button class="text-2xl font-bold p-1 min-h-[44px] min-w-[44px] inline-flex items-center justify-center rounded-lg hover:bg-gray-400 focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-900"
+                aria-expanded="false" aria-controls="mobile-nav" aria-label="Toggle navigation menu">
+                ≡
+            </button>
+            <span class="text-lg font-bold text-gray-900">Fitness Planner</span>
+        </div>
+
+        <div class="flex items-center space-x-2">
+            <a href="routine-builder.html"
+                class="bg-gray-400 hover:bg-gray-500 text-black px-3 py-1 rounded-full font-semibold text-xs min-h-[44px] inline-flex items-center focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-900">
+                🖥️ Desktop
+            </a>
+            <a href="profile.html" class="text-2xl cursor-pointer p-1 min-h-[44px] min-w-[44px] inline-flex items-center justify-center rounded-full hover:bg-gray-400 focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-900" aria-label="Profile">
+                👤
+            </a>
+        </div>
+    </header>
+
+    <!-- Mobile Navigation Drawer (Hidden by default, static representation) -->
+    <nav id="mobile-nav" aria-label="Mobile Navigation Drawer" class="hidden bg-gray-200 border-b border-gray-400 p-4 space-y-2">
+        <a href="index.html" class="block py-2.5 px-3 rounded-lg font-medium text-gray-900 hover:bg-gray-300 min-h-[44px] flex items-center focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-900">Home</a>
+        <a href="dashboard.html" class="block py-2.5 px-3 rounded-lg font-medium text-gray-900 hover:bg-gray-300 min-h-[44px] flex items-center focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-900">Dashboard</a>
+        <a href="routine-builder-mobile.html" class="block py-2.5 px-3 rounded-lg font-bold text-black bg-gray-300 min-h-[44px] flex items-center focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-900" aria-current="page">Routine Builder</a>
+        <a href="active-workout-mobile.html" class="block py-2.5 px-3 rounded-lg font-medium text-gray-900 hover:bg-gray-300 min-h-[44px] flex items-center focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-900">Active Workout</a>
+        <a href="profile.html" class="block py-2.5 px-3 rounded-lg font-medium text-gray-900 hover:bg-gray-300 min-h-[44px] flex items-center focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-900">Profile</a>
+    </nav>
+
+    <!-- Main Mobile Content (390px centered container) -->
+    <main id="main-content" class="w-full max-w-[390px] mx-auto px-4 py-4 space-y-6 flex-grow">
+
+        <!-- Mobile Title -->
+        <section class="space-y-1 pb-1 border-b border-gray-300">
+            <h1 class="text-xl font-bold text-gray-900">Routine Builder</h1>
+            <p class="text-xs text-gray-700">Design your split and configure exercise targets on mobile.</p>
+        </section>
+
+        <!-- Routine Metadata Card -->
+        <section aria-labelledby="m-routine-details" class="bg-gray-300 p-5 rounded-3xl space-y-4 shadow-sm">
+            <h2 id="m-routine-details" class="text-base font-bold text-gray-900 border-b border-gray-400 pb-2">
+                Routine Details
+            </h2>
+
+            <form action="#" method="get" class="space-y-3" onsubmit="return false;">
+                <div class="space-y-1">
+                    <label for="m-routine-name" class="block text-xs font-bold text-gray-900">
+                        Routine Name <span class="text-red-700" aria-hidden="true">*</span>
+                    </label>
+                    <input type="text" id="m-routine-name" name="mobileRoutineName" required value="Push Day Hypertrophy"
+                        placeholder="e.g. Upper Body Blast"
+                        class="w-full bg-white border border-gray-400 rounded-xl px-3 py-2 text-sm text-gray-900 font-medium min-h-[44px] focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-900">
+                </div>
+
+                <div class="space-y-1">
+                    <label for="m-routine-day" class="block text-xs font-bold text-gray-900">
+                        Scheduled Day <span class="text-red-700" aria-hidden="true">*</span>
+                    </label>
+                    <select id="m-routine-day" name="mobileRoutineDay"
+                        class="w-full bg-white border border-gray-400 rounded-xl px-3 py-2 text-sm text-gray-900 font-medium min-h-[44px] focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-900">
+                        <option value="monday" selected>Monday (Push Split)</option>
+                        <option value="tuesday">Tuesday (Pull Split)</option>
+                        <option value="wednesday">Wednesday (Active Recovery)</option>
+                        <option value="thursday">Thursday (Upper Power)</option>
+                        <option value="friday">Friday (Lower Hypertrophy)</option>
+                        <option value="saturday">Saturday (Conditioning)</option>
+                        <option value="sunday">Sunday (Rest &amp; Mobility)</option>
+                    </select>
+                </div>
+
+                <div class="space-y-1">
+                    <label for="m-routine-notes" class="block text-xs font-bold text-gray-900">
+                        Routine Notes
+                    </label>
+                    <textarea id="m-routine-notes" name="mobileRoutineNotes" rows="2"
+                        placeholder="Workout instructions, rest rules, warmups..."
+                        class="w-full bg-white border border-gray-400 rounded-xl p-3 text-xs text-gray-900 font-medium focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-900">Warm up rotator cuffs. Rest 90s on compound presses, 60s on isolations.</textarea>
+                </div>
+            </form>
+        </section>
+
+        <!-- Exercises List Card -->
+        <section aria-labelledby="m-exercises-title" class="bg-gray-300 p-5 rounded-3xl space-y-4 shadow-sm">
+            <div class="flex items-center justify-between border-b border-gray-400 pb-2">
+                <h2 id="m-exercises-title" class="text-base font-bold text-gray-900">
+                    Exercises (4)
+                </h2>
+                <button type="button"
+                    class="bg-gray-800 hover:bg-gray-900 text-white px-3.5 py-1.5 rounded-full font-bold text-xs min-h-[44px] inline-flex items-center justify-center focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-900">
+                    + Add Exercise
+                </button>
+            </div>
+
+            <ol class="space-y-3" aria-label="Mobile Exercise Sequence">
+
+                <!-- Ex 1 -->
+                <li class="bg-gray-100 p-3.5 rounded-2xl border border-gray-400 space-y-2.5">
+                    <div class="flex items-start justify-between">
+                        <div class="flex items-center space-x-2">
+                            <button type="button" aria-label="Reorder Barbell Bench Press"
+                                class="text-base text-gray-600 hover:text-gray-900 p-1 min-h-[44px] min-w-[44px] inline-flex items-center justify-center cursor-grab focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-900 rounded-lg">
+                                <span aria-hidden="true">⠿</span>
+                            </button>
+                            <div>
+                                <h3 class="text-sm font-bold text-gray-900">#1 Barbell Bench Press</h3>
+                                <span class="text-[10px] font-bold bg-gray-300 text-gray-800 px-2 py-0.5 rounded-full">Chest</span>
+                            </div>
+                        </div>
+                        <button type="button" aria-label="Remove Barbell Bench Press from routine"
+                            class="text-gray-900 bg-gray-300 hover:bg-gray-400 p-1 min-h-[44px] min-w-[44px] inline-flex items-center justify-center rounded-lg font-bold focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-900">
+                            ✕
+                        </button>
+                    </div>
+
+                    <div class="grid grid-cols-3 gap-2 pt-1 border-t border-gray-300">
+                        <div>
+                            <label for="mob-ex1-sets" class="block text-[11px] font-bold text-gray-800 mb-1">Sets</label>
+                            <input type="number" id="mob-ex1-sets" name="mobEx1Sets" value="4" min="1" max="20"
+                                class="w-full bg-white border border-gray-400 rounded-xl px-2 py-1.5 text-center text-sm font-bold text-gray-900 min-h-[44px] focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-900">
+                        </div>
+                        <div>
+                            <label for="mob-ex1-reps" class="block text-[11px] font-bold text-gray-800 mb-1">Reps</label>
+                            <input type="number" id="mob-ex1-reps" name="mobEx1Reps" value="8" min="1" max="100"
+                                class="w-full bg-white border border-gray-400 rounded-xl px-2 py-1.5 text-center text-sm font-bold text-gray-900 min-h-[44px] focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-900">
+                        </div>
+                        <div>
+                            <label for="mob-ex1-rest" class="block text-[11px] font-bold text-gray-800 mb-1">Rest (s)</label>
+                            <input type="number" id="mob-ex1-rest" name="mobEx1Rest" value="90" min="0" max="600" step="15"
+                                class="w-full bg-white border border-gray-400 rounded-xl px-2 py-1.5 text-center text-sm font-bold text-gray-900 min-h-[44px] focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-900">
+                        </div>
+                    </div>
+                </li>
+
+                <!-- Ex 2 -->
+                <li class="bg-gray-100 p-3.5 rounded-2xl border border-gray-400 space-y-2.5">
+                    <div class="flex items-start justify-between">
+                        <div class="flex items-center space-x-2">
+                            <button type="button" aria-label="Reorder Incline Dumbbell Press"
+                                class="text-base text-gray-600 hover:text-gray-900 p-1 min-h-[44px] min-w-[44px] inline-flex items-center justify-center cursor-grab focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-900 rounded-lg">
+                                <span aria-hidden="true">⠿</span>
+                            </button>
+                            <div>
+                                <h3 class="text-sm font-bold text-gray-900">#2 Incline DB Press</h3>
+                                <span class="text-[10px] font-bold bg-gray-300 text-gray-800 px-2 py-0.5 rounded-full">Upper Chest</span>
+                            </div>
+                        </div>
+                        <button type="button" aria-label="Remove Incline Dumbbell Press from routine"
+                            class="text-gray-900 bg-gray-300 hover:bg-gray-400 p-1 min-h-[44px] min-w-[44px] inline-flex items-center justify-center rounded-lg font-bold focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-900">
+                            ✕
+                        </button>
+                    </div>
+
+                    <div class="grid grid-cols-3 gap-2 pt-1 border-t border-gray-300">
+                        <div>
+                            <label for="mob-ex2-sets" class="block text-[11px] font-bold text-gray-800 mb-1">Sets</label>
+                            <input type="number" id="mob-ex2-sets" name="mobEx2Sets" value="3" min="1" max="20"
+                                class="w-full bg-white border border-gray-400 rounded-xl px-2 py-1.5 text-center text-sm font-bold text-gray-900 min-h-[44px] focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-900">
+                        </div>
+                        <div>
+                            <label for="mob-ex2-reps" class="block text-[11px] font-bold text-gray-800 mb-1">Reps</label>
+                            <input type="number" id="mob-ex2-reps" name="mobEx2Reps" value="10" min="1" max="100"
+                                class="w-full bg-white border border-gray-400 rounded-xl px-2 py-1.5 text-center text-sm font-bold text-gray-900 min-h-[44px] focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-900">
+                        </div>
+                        <div>
+                            <label for="mob-ex2-rest" class="block text-[11px] font-bold text-gray-800 mb-1">Rest (s)</label>
+                            <input type="number" id="mob-ex2-rest" name="mobEx2Rest" value="75" min="0" max="600" step="15"
+                                class="w-full bg-white border border-gray-400 rounded-xl px-2 py-1.5 text-center text-sm font-bold text-gray-900 min-h-[44px] focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-900">
+                        </div>
+                    </div>
+                </li>
+
+                <!-- Ex 3 -->
+                <li class="bg-gray-100 p-3.5 rounded-2xl border border-gray-400 space-y-2.5">
+                    <div class="flex items-start justify-between">
+                        <div class="flex items-center space-x-2">
+                            <button type="button" aria-label="Reorder Standing Cable Lateral Raise"
+                                class="text-base text-gray-600 hover:text-gray-900 p-1 min-h-[44px] min-w-[44px] inline-flex items-center justify-center cursor-grab focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-900 rounded-lg">
+                                <span aria-hidden="true">⠿</span>
+                            </button>
+                            <div>
+                                <h3 class="text-sm font-bold text-gray-900">#3 Cable Lateral Raise</h3>
+                                <span class="text-[10px] font-bold bg-gray-300 text-gray-800 px-2 py-0.5 rounded-full">Shoulders</span>
+                            </div>
+                        </div>
+                        <button type="button" aria-label="Remove Standing Cable Lateral Raise from routine"
+                            class="text-gray-900 bg-gray-300 hover:bg-gray-400 p-1 min-h-[44px] min-w-[44px] inline-flex items-center justify-center rounded-lg font-bold focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-900">
+                            ✕
+                        </button>
+                    </div>
+
+                    <div class="grid grid-cols-3 gap-2 pt-1 border-t border-gray-300">
+                        <div>
+                            <label for="mob-ex3-sets" class="block text-[11px] font-bold text-gray-800 mb-1">Sets</label>
+                            <input type="number" id="mob-ex3-sets" name="mobEx3Sets" value="4" min="1" max="20"
+                                class="w-full bg-white border border-gray-400 rounded-xl px-2 py-1.5 text-center text-sm font-bold text-gray-900 min-h-[44px] focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-900">
+                        </div>
+                        <div>
+                            <label for="mob-ex3-reps" class="block text-[11px] font-bold text-gray-800 mb-1">Reps</label>
+                            <input type="number" id="mob-ex3-reps" name="mobEx3Reps" value="12" min="1" max="100"
+                                class="w-full bg-white border border-gray-400 rounded-xl px-2 py-1.5 text-center text-sm font-bold text-gray-900 min-h-[44px] focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-900">
+                        </div>
+                        <div>
+                            <label for="mob-ex3-rest" class="block text-[11px] font-bold text-gray-800 mb-1">Rest (s)</label>
+                            <input type="number" id="mob-ex3-rest" name="mobEx3Rest" value="60" min="0" max="600" step="15"
+                                class="w-full bg-white border border-gray-400 rounded-xl px-2 py-1.5 text-center text-sm font-bold text-gray-900 min-h-[44px] focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-900">
+                        </div>
+                    </div>
+                </li>
+
+                <!-- Ex 4 -->
+                <li class="bg-gray-100 p-3.5 rounded-2xl border border-gray-400 space-y-2.5">
+                    <div class="flex items-start justify-between">
+                        <div class="flex items-center space-x-2">
+                            <button type="button" aria-label="Reorder Tricep Rope Pushdown"
+                                class="text-base text-gray-600 hover:text-gray-900 p-1 min-h-[44px] min-w-[44px] inline-flex items-center justify-center cursor-grab focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-900 rounded-lg">
+                                <span aria-hidden="true">⠿</span>
+                            </button>
+                            <div>
+                                <h3 class="text-sm font-bold text-gray-900">#4 Tricep Rope Pushdown</h3>
+                                <span class="text-[10px] font-bold bg-gray-300 text-gray-800 px-2 py-0.5 rounded-full">Triceps</span>
+                            </div>
+                        </div>
+                        <button type="button" aria-label="Remove Tricep Rope Pushdown from routine"
+                            class="text-gray-900 bg-gray-300 hover:bg-gray-400 p-1 min-h-[44px] min-w-[44px] inline-flex items-center justify-center rounded-lg font-bold focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-900">
+                            ✕
+                        </button>
+                    </div>
+
+                    <div class="grid grid-cols-3 gap-2 pt-1 border-t border-gray-300">
+                        <div>
+                            <label for="mob-ex4-sets" class="block text-[11px] font-bold text-gray-800 mb-1">Sets</label>
+                            <input type="number" id="mob-ex4-sets" name="mobEx4Sets" value="3" min="1" max="20"
+                                class="w-full bg-white border border-gray-400 rounded-xl px-2 py-1.5 text-center text-sm font-bold text-gray-900 min-h-[44px] focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-900">
+                        </div>
+                        <div>
+                            <label for="mob-ex4-reps" class="block text-[11px] font-bold text-gray-800 mb-1">Reps</label>
+                            <input type="number" id="mob-ex4-reps" name="mobEx4Reps" value="12" min="1" max="100"
+                                class="w-full bg-white border border-gray-400 rounded-xl px-2 py-1.5 text-center text-sm font-bold text-gray-900 min-h-[44px] focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-900">
+                        </div>
+                        <div>
+                            <label for="mob-ex4-rest" class="block text-[11px] font-bold text-gray-800 mb-1">Rest (s)</label>
+                            <input type="number" id="mob-ex4-rest" name="mobEx4Rest" value="60" min="0" max="600" step="15"
+                                class="w-full bg-white border border-gray-400 rounded-xl px-2 py-1.5 text-center text-sm font-bold text-gray-900 min-h-[44px] focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-900">
+                        </div>
+                    </div>
+                </li>
+
+            </ol>
+
+            <!-- Save / Cancel Buttons -->
+            <div class="flex flex-col gap-2 pt-2 border-t border-gray-400">
+                <button type="button"
+                    class="w-full bg-gray-800 hover:bg-gray-900 text-white py-2.5 rounded-full font-bold text-sm min-h-[44px] focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-900">
+                    Save Routine
+                </button>
+                <button type="button"
+                    class="w-full bg-gray-400 hover:bg-gray-500 text-black py-2.5 rounded-full font-bold text-sm min-h-[44px] focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-900">
+                    Cancel
+                </button>
+            </div>
+        </section>
+
+        <!-- Saved Routines Section -->
+        <section aria-labelledby="m-saved-heading" class="space-y-3">
+            <h2 id="m-saved-heading" class="text-base font-bold text-gray-900">
+                Saved Routines
+            </h2>
+
+            <div class="space-y-3">
+                <article class="bg-gray-300 p-4 rounded-3xl space-y-2.5">
+                    <div class="flex items-center justify-between">
+                        <h3 class="text-sm font-bold text-gray-900">Push Day Hypertrophy</h3>
+                        <span class="text-xs font-bold bg-gray-400 text-black px-2 py-0.5 rounded-full">Mon</span>
+                    </div>
+                    <p class="text-xs text-gray-700">4 exercises • 14 sets • ~60m</p>
+                    <div class="grid grid-cols-2 gap-2 pt-1 border-t border-gray-400">
+                        <a href="routine-builder-mobile.html"
+                            class="text-center bg-gray-400 hover:bg-gray-500 text-black py-2 rounded-full font-semibold text-xs min-h-[44px] inline-flex items-center justify-center focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-900">
+                            Edit
+                        </a>
+                        <a href="active-workout-mobile.html"
+                            class="text-center bg-gray-800 hover:bg-gray-900 text-white py-2 rounded-full font-bold text-xs min-h-[44px] inline-flex items-center justify-center focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-900">
+                            Start
+                        </a>
+                    </div>
+                </article>
+
+                <article class="bg-gray-300 p-4 rounded-3xl space-y-2.5">
+                    <div class="flex items-center justify-between">
+                        <h3 class="text-sm font-bold text-gray-900">Pull Day Strength</h3>
+                        <span class="text-xs font-bold bg-gray-400 text-black px-2 py-0.5 rounded-full">Tue</span>
+                    </div>
+                    <p class="text-xs text-gray-700">5 exercises • 18 sets • ~75m</p>
+                    <div class="grid grid-cols-2 gap-2 pt-1 border-t border-gray-400">
+                        <a href="routine-builder-mobile.html"
+                            class="text-center bg-gray-400 hover:bg-gray-500 text-black py-2 rounded-full font-semibold text-xs min-h-[44px] inline-flex items-center justify-center focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-900">
+                            Edit
+                        </a>
+                        <a href="active-workout-mobile.html"
+                            class="text-center bg-gray-800 hover:bg-gray-900 text-white py-2 rounded-full font-bold text-xs min-h-[44px] inline-flex items-center justify-center focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-900">
+                            Start
+                        </a>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Mobile Footer (matching teammate wireframe) -->
+    <footer class="bg-gray-300 py-3 text-center text-xs font-semibold text-gray-800 mb-14">
+        <p>&copy; 2026 FitnessPlanner</p>
+    </footer>
+
+    <!-- Fixed Mobile Bottom Navigation Bar (Matching iPhone 16 mockups with label 'nav bar') -->
+    <nav aria-label="Mobile Bottom Navigation Bar"
+        class="fixed bottom-0 left-0 right-0 z-50 bg-gray-300 border-t border-gray-400 px-2 py-1 shadow-md">
+        <div class="max-w-[390px] mx-auto grid grid-cols-5 gap-1 text-center">
+            <a href="index.html"
+                class="min-h-[44px] flex flex-col items-center justify-center py-1 text-gray-800 hover:text-black rounded-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-900">
+                <span class="text-sm" aria-hidden="true">🏠</span>
+                <span class="text-[10px] font-semibold mt-0.5">Home</span>
+            </a>
+            <a href="dashboard.html"
+                class="min-h-[44px] flex flex-col items-center justify-center py-1 text-gray-800 hover:text-black rounded-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-900">
+                <span class="text-sm" aria-hidden="true">📊</span>
+                <span class="text-[10px] font-semibold mt-0.5">Dashboard</span>
+            </a>
+            <a href="routine-builder-mobile.html" aria-current="page"
+                class="min-h-[44px] flex flex-col items-center justify-center py-1 text-black font-bold bg-gray-400 rounded-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-900">
+                <span class="text-sm" aria-hidden="true">📝</span>
+                <span class="text-[10px] font-bold mt-0.5">Routines</span>
+            </a>
+            <a href="active-workout-mobile.html"
+                class="min-h-[44px] flex flex-col items-center justify-center py-1 text-gray-800 hover:text-black rounded-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-900">
+                <span class="text-sm" aria-hidden="true">⏱️</span>
+                <span class="text-[10px] font-semibold mt-0.5">Workout</span>
+            </a>
+            <a href="profile.html"
+                class="min-h-[44px] flex flex-col items-center justify-center py-1 text-gray-800 hover:text-black rounded-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-900">
+                <span class="text-sm" aria-hidden="true">👤</span>
+                <span class="text-[10px] font-semibold mt-0.5">Profile</span>
+            </a>
+        </div>
+    </nav>
+
+</body>
+
+</html>

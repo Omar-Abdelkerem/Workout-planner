@@ -43,9 +43,11 @@ The compiled CSS output is committed to [`frontend/dist/output.css`](file:///mnt
 - **Accessible Timers & Tables**: Timers implement `role="timer"` with `aria-live="polite"`; set tables use real semantic HTML `<table>` elements with `<th scope="col">` and `<th scope="row">`.
 - **Keyboard Navigation & Hit Targets**: Visible focus rings (`focus-visible:ring-2`), "Skip to main content" links, and minimum 44×44px touch targets.
 
-### Documentation Links
+### Documentation & Design Artifacts
+- **Figma Design File**: [Member 3 Figma Wireframes](https://www.figma.com/make/pkDZL2bwZhThEP2lX51AiD/Fitness-Planner-Wireframes?t=PWsvfZLEtGskS5ib-20&fullscreen=1)
+- **Exported Wireframes**: [`docs/wireframes/routine-builder-wireframes.png`](file:///mnt/c/Users/oa304/OneDrive/Desktop/UI%20project/docs/wireframes/routine-builder-wireframes.png) and [`docs/wireframes/active-workout-wireframes.png`](file:///mnt/c/Users/oa304/OneDrive/Desktop/UI%20project/docs/wireframes/active-workout-wireframes.png)
 - **Design System Summary**: [`docs/design-summary.md`](file:///mnt/c/Users/oa304/OneDrive/Desktop/UI%20project/docs/design-summary.md)
 - **Accessibility Audit Report**: [`docs/a11y-report.md`](file:///mnt/c/Users/oa304/OneDrive/Desktop/UI%20project/docs/a11y-report.md)
 - **Figma AI Prompts**: [`docs/figma-prompt.md`](file:///mnt/c/Users/oa304/OneDrive/Desktop/UI%20project/docs/figma-prompt.md)
-- **Figma Links**: [`docs/figma-link.md`](file:///mnt/c/Users/oa304/OneDrive/Desktop/UI%20project/docs/figma-link.md)
+- **Figma Links Index**: [`docs/figma-link.md`](file:///mnt/c/Users/oa304/OneDrive/Desktop/UI%20project/docs/figma-link.md)
 - **Lighthouse / Axe Audit Artifacts**: [`docs/lighthouse/`](file:///mnt/c/Users/oa304/OneDrive/Desktop/UI%20project/docs/lighthouse/)

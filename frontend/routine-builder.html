@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fitness Planner - Routine Builder</title>
+    <link href="./dist/output.css" rel="stylesheet">
+</head>
+
+<body class="bg-gray-100 text-gray-900 flex flex-col min-h-screen justify-between">
+
+    <!-- Skip to main content link (WCAG AA requirement) -->
+    <a href="#main-content"
+        class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-gray-900 focus:text-white focus:font-bold focus:rounded-full focus:ring-2 focus:ring-black focus:outline-none">
+        Skip to main content
+    </a>
+
+    <!-- Header (matching teammates' shell) -->
+    <header class="bg-gray-300 px-6 py-4 flex items-center justify-between">
+        <div class="flex items-center space-x-4">
+            <button class="md:hidden text-2xl font-bold p-1 min-h-[44px] min-w-[44px] inline-flex items-center justify-center rounded-lg hover:bg-gray-400 focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-900"
+                aria-expanded="false" aria-controls="mobile-nav" aria-label="Toggle navigation menu">
+                ≡
+            </button>
+            <a href="index.html" class="text-xl md:text-2xl font-bold text-gray-900 hover:text-black">
+                Fitness Planner
+            </a>
+        </div>
+
+        <nav class="hidden md:flex space-x-6 font-medium text-gray-800" aria-label="Main Navigation">
+            <a href="index.html" class="hover:underline focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-900 rounded px-1">Home</a>
+            <a href="dashboard.html" class="hover:underline focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-900 rounded px-1">Dashboard</a>
+            <a href="routine-builder.html" class="hover:underline font-bold text-black border-b-2 border-gray-800 pb-0.5 focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-900 rounded px-1" aria-current="page">Routine Builder</a>
+            <a href="active-workout.html" class="hover:underline focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-900 rounded px-1">Active Workout</a>
+            <a href="profile.html" class="hover:underline focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-900 rounded px-1">Profile</a>
+        </nav>
+
+        <div class="flex items-center space-x-3">
+            <a href="routine-builder-mobile.html"
+                class="hidden sm:inline-flex bg-gray-400 hover:bg-gray-500 text-black px-4 py-1.5 rounded-full font-semibold text-xs transition min-h-[44px] items-center focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-900">
+                📱 Mobile View
+            </a>
+            <a href="profile.html" class="text-2xl cursor-pointer p-1 min-h-[44px] min-w-[44px] inline-flex items-center justify-center rounded-full hover:bg-gray-400 transition focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-900" aria-label="User Profile">
+                👤
+            </a>
+        </div>
+    </header>
+
+    <!-- Mobile Navigation Drawer (Hidden by default, static prototype representation) -->
+    <nav id="mobile-nav" aria-label="Mobile Navigation Drawer" class="hidden md:hidden bg-gray-200 border-b border-gray-400 p-4 space-y-2">
+        <a href="index.html" class="block py-2 px-3 rounded-lg font-medium text-gray-900 hover:bg-gray-300 min-h-[44px] flex items-center focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-900">Home</a>
+        <a href="dashboard.html" class="block py-2 px-3 rounded-lg font-medium text-gray-900 hover:bg-gray-300 min-h-[44px] flex items-center focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-900">Dashboard</a>
+        <a href="routine-builder.html" class="block py-2 px-3 rounded-lg font-bold text-black bg-gray-300 min-h-[44px] flex items-center focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-900" aria-current="page">Routine Builder</a>
+        <a href="active-workout.html" class="block py-2 px-3 rounded-lg font-medium text-gray-900 hover:bg-gray-300 min-h-[44px] flex items-center focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-900">Active Workout</a>
+        <a href="profile.html" class="block py-2 px-3 rounded-lg font-medium text-gray-900 hover:bg-gray-300 min-h-[44px] flex items-center focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-900">Profile</a>
+    </nav>
+
+    <!-- Main Content -->
+    <main id="main-content" class="container mx-auto px-4 py-6 flex-grow space-y-8 max-w-5xl">
+
+        <!-- Page Heading -->
+        <section class="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-2 border-b border-gray-300">
+            <div>
+                <h1 class="text-2xl md:text-3xl font-bold text-gray-900">Routine Builder</h1>
+                <p class="text-sm text-gray-700 mt-1">Design and configure custom workout routines with targeted sets, reps, and rest intervals.</p>
+            </div>
+            <div class="flex items-center gap-3">
+                <a href="active-workout.html"
+                    class="bg-gray-800 hover:bg-gray-900 text-white px-5 py-2.5 rounded-full font-bold text-sm transition min-h-[44px] inline-flex items-center focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-900">
+                    ▶ Launch Active Workout
+                </a>
+            </div>
+        </section>
+
+        <!-- Routine Metadata Card (Forms) -->
+        <section aria-labelledby="routine-meta-heading" class="bg-gray-300 p-6 rounded-3xl space-y-6 shadow-sm">
+            <h2 id="routine-meta-heading" class="text-xl font-bold text-gray-900 border-b border-gray-400 pb-3">
+                Routine Details
+            </h2>
+
+            <form action="#" method="get" class="space-y-4" onsubmit="return false;">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <!-- Routine Name Input -->
+                    <div class="space-y-1.5">
+                        <label for="routine-name" class="block text-sm font-bold text-gray-900">
+                            Routine Name <span class="text-red-700" aria-hidden="true">*</span>
+                        </label>
+                        <input type="text" id="routine-name" name="routineName" required value="Push Day Hypertrophy"
+                            placeholder="e.g. Push Day, Pull Day, Legs &amp; Core"
+                            class="w-full bg-white border border-gray-400 rounded-2xl px-4 py-2.5 text-gray-900 font-medium min-h-[44px] focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-900">
+                        <p class="text-xs text-gray-700">Enter a descriptive title for this routine.</p>
+                    </div>
+
+                    <!-- Day of the Week Select -->
+                    <div class="space-y-1.5">
+                        <label for="routine-day" class="block text-sm font-bold text-gray-900">
+                            Assigned Day <span class="text-red-700" aria-hidden="true">*</span>
+                        </label>
+                        <select id="routine-day" name="routineDay"
+                            class="w-full bg-white border border-gray-400 rounded-2xl px-4 py-2.5 text-gray-900 font-medium min-h-[44px] focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-900">
+                            <option value="monday" selected>Monday - Push (Chest &amp; Triceps)</option>
+                            <option value="tuesday">Tuesday - Pull (Back &amp; Biceps)</option>
+                            <option value="wednesday">Wednesday - Active Recovery</option>
+                            <option value="thursday">Thursday - Upper Power</option>
+                            <option value="friday">Friday - Lower Hypertrophy</option>
+                            <option value="saturday">Saturday - Full Body Conditioning</option>
+                            <option value="sunday">Sunday - Rest &amp; Mobility</option>
+                        </select>
+                        <p class="text-xs text-gray-700">Select when this routine takes place in your weekly schedule.</p>
+                    </div>
+                </div>
+
+                <!-- Notes Textarea -->
+                <div class="space-y-1.5">
+                    <label for="routine-notes" class="block text-sm font-bold text-gray-900">
+                        Routine Notes &amp; Coaching Tips
+                    </label>
+                    <textarea id="routine-notes" name="routineNotes" rows="3"
+                        placeholder="e.g. Warm up rotator cuffs with dynamic resistance bands. Maintain 2 RIR on compound lifts."
+                        class="w-full bg-white border border-gray-400 rounded-2xl p-4 text-gray-900 text-sm font-medium focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-900">Warm up with 5 min dynamic stretching. Rest 90 seconds on heavy compound sets and 60 seconds on isolation exercises. Focus on smooth 2-second eccentrics.</textarea>
+                    <p class="text-xs text-gray-700">Optional instructions or target effort cues for this session.</p>
+                </div>
+            </form>
+        </section>
+
+        <!-- Ordered Exercise List Section -->
+        <section aria-labelledby="exercises-heading" class="bg-gray-300 p-6 rounded-3xl space-y-6 shadow-sm">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-gray-400 pb-3">
+                <div>
+                    <h2 id="exercises-heading" class="text-xl font-bold text-gray-900">
+                        Ordered Exercise List (4 Exercises)
+                    </h2>
+                    <p class="text-xs text-gray-700 mt-0.5">Drag to reorder sequence, and configure target sets, reps, and rest duration.</p>
+                </div>
+
+                <!-- Add Exercise Button -->
+                <button type="button"
+                    class="bg-gray-800 hover:bg-gray-900 text-white px-5 py-2 rounded-full font-bold text-sm transition min-h-[44px] inline-flex items-center justify-center gap-1.5 focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-900">
+                    <span aria-hidden="true">+</span> Add Exercise
+                </button>
+            </div>
+
+            <!-- Ordered List of Exercises -->
+            <ol class="space-y-4" aria-label="Routine Exercises List">
+
+                <!-- Exercise 1 -->
+                <li class="bg-gray-100 p-4 md:p-5 rounded-2xl border border-gray-400 shadow-sm flex flex-col md:flex-row md:items-center justify-between gap-4">
+                    <!-- Left: Drag handle + Name + Badge -->
+                    <div class="flex items-center space-x-3 flex-1">
+                        <!-- Drag Handle Icon -->
+                        <button type="button" aria-label="Reorder Barbell Bench Press"
+                            class="text-xl text-gray-600 hover:text-gray-900 p-2 min-h-[44px] min-w-[44px] inline-flex items-center justify-center cursor-grab focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-900 rounded-lg">
+                            <span aria-hidden="true">⠿</span>
+                        </button>
+                        <div>
+                            <div class="flex items-center gap-2">
+                                <span class="text-xs font-bold bg-gray-300 text-gray-900 px-2 py-0.5 rounded-full">#1</span>
+                                <h3 class="text-base md:text-lg font-bold text-gray-900">Barbell Bench Press</h3>
+                                <span class="text-xs font-bold bg-gray-300 text-gray-800 px-2.5 py-0.5 rounded-full">Chest</span>
+                            </div>
+                            <p class="text-xs text-gray-700 mt-0.5">Primary horizontal compound press.</p>
+                        </div>
+                    </div>
+
+                    <!-- Right: Number inputs for sets, reps, rest + remove -->
+                    <div class="flex flex-wrap items-end gap-3 pt-2 md:pt-0 border-t md:border-t-0 border-gray-300">
+                        <div class="w-20">
+                            <label for="ex1-sets" class="block text-xs font-bold text-gray-800 mb-1">Sets</label>
+                            <input type="number" id="ex1-sets" name="ex1Sets" min="1" max="20" value="4"
+                                class="w-full bg-white border border-gray-400 rounded-xl px-2.5 py-1.5 text-center font-bold text-gray-900 min-h-[44px] focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-900">
+                        </div>
+
+                        <div class="w-24">
+                            <label for="ex1-reps" class="block text-xs font-bold text-gray-800 mb-1">Target Reps</label>
+                            <input type="number" id="ex1-reps" name="ex1Reps" min="1" max="100" value="8"
+                                class="w-full bg-white border border-gray-400 rounded-xl px-2.5 py-1.5 text-center font-bold text-gray-900 min-h-[44px] focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-900">
+                        </div>
+
+                        <div class="w-24">
+                            <label for="ex1-rest" class="block text-xs font-bold text-gray-800 mb-1">Rest (sec)</label>
+                            <input type="number" id="ex1-rest" name="ex1Rest" min="0" max="600" step="15" value="90"
+                                class="w-full bg-white border border-gray-400 rounded-xl px-2.5 py-1.5 text-center font-bold text-gray-900 min-h-[44px] focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-900">
+                        </div>
+
+                        <button type="button" aria-label="Remove Barbell Bench Press from routine"
+                            class="bg-gray-300 hover:bg-gray-400 text-gray-900 p-2 min-h-[44px] min-w-[44px] inline-flex items-center justify-center rounded-xl font-bold transition focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-900">
+                            ✕
+                        </button>
+                    </div>
+                </li>
+
+                <!-- Exercise 2 -->
+                <li class="bg-gray-100 p-4 md:p-5 rounded-2xl border border-gray-400 shadow-sm flex flex-col md:flex-row md:items-center justify-between gap-4">
+                    <div class="flex items-center space-x-3 flex-1">
+                        <button type="button" aria-label="Reorder Incline Dumbbell Press"
+                            class="text-xl text-gray-600 hover:text-gray-900 p-2 min-h-[44px] min-w-[44px] inline-flex items-center justify-center cursor-grab focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-900 rounded-lg">
+                            <span aria-hidden="true">⠿</span>
+                        </button>
+                        <div>
+                            <div class="flex items-center gap-2">
+                                <span class="text-xs font-bold bg-gray-300 text-gray-900 px-2 py-0.5 rounded-full">#2</span>
+                                <h3 class="text-base md:text-lg font-bold text-gray-900">Incline Dumbbell Press</h3>
+                                <span class="text-xs font-bold bg-gray-300 text-gray-800 px-2.5 py-0.5 rounded-full">Upper Chest</span>
+                            </div>
+                            <p class="text-xs text-gray-700 mt-0.5">Clavicular head dumbbell press at 30 degrees.</p>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-wrap items-end gap-3 pt-2 md:pt-0 border-t md:border-t-0 border-gray-300">
+                        <div class="w-20">
+                            <label for="ex2-sets" class="block text-xs font-bold text-gray-800 mb-1">Sets</label>
+                            <input type="number" id="ex2-sets" name="ex2Sets" min="1" max="20" value="3"
+                                class="w-full bg-white border border-gray-400 rounded-xl px-2.5 py-1.5 text-center font-bold text-gray-900 min-h-[44px] focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-900">
+                        </div>
+                        <div class="w-24">
+                            <label for="ex2-reps" class="block text-xs font-bold text-gray-800 mb-1">Target Reps</label>
+                            <input type="number" id="ex2-reps" name="ex2Reps" min="1" max="100" value="10"
+                                class="w-full bg-white border border-gray-400 rounded-xl px-2.5 py-1.5 text-center font-bold text-gray-900 min-h-[44px] focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-900">
+                        </div>
+                        <div class="w-24">
+                            <label for="ex2-rest" class="block text-xs font-bold text-gray-800 mb-1">Rest (sec)</label>
+                            <input type="number" id="ex2-rest" name="ex2Rest" min="0" max="600" step="15" value="75"
+                                class="w-full bg-white border border-gray-400 rounded-xl px-2.5 py-1.5 text-center font-bold text-gray-900 min-h-[44px] focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-900">
+                        </div>
+                        <button type="button" aria-label="Remove Incline Dumbbell Press from routine"
+                            class="bg-gray-300 hover:bg-gray-400 text-gray-900 p-2 min-h-[44px] min-w-[44px] inline-flex items-center justify-center rounded-xl font-bold transition focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-900">
+                            ✕
+                        </button>
+                    </div>
+                </li>
+
+                <!-- Exercise 3 -->
+                <li class="bg-gray-100 p-4 md:p-5 rounded-2xl border border-gray-400 shadow-sm flex flex-col md:flex-row md:items-center justify-between gap-4">
+                    <div class="flex items-center space-x-3 flex-1">
+                        <button type="button" aria-label="Reorder Standing Cable Lateral Raise"
+                            class="text-xl text-gray-600 hover:text-gray-900 p-2 min-h-[44px] min-w-[44px] inline-flex items-center justify-center cursor-grab focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-900 rounded-lg">
+                            <span aria-hidden="true">⠿</span>
+                        </button>
+                        <div>
+                            <div class="flex items-center gap-2">
+                                <span class="text-xs font-bold bg-gray-300 text-gray-900 px-2 py-0.5 rounded-full">#3</span>
+                                <h3 class="text-base md:text-lg font-bold text-gray-900">Standing Cable Lateral Raise</h3>
+                                <span class="text-xs font-bold bg-gray-300 text-gray-800 px-2.5 py-0.5 rounded-full">Shoulders</span>
+                            </div>
+                            <p class="text-xs text-gray-700 mt-0.5">Lateral deltoid continuous tension isolation.</p>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-wrap items-end gap-3 pt-2 md:pt-0 border-t md:border-t-0 border-gray-300">
+                        <div class="w-20">
+                            <label for="ex3-sets" class="block text-xs font-bold text-gray-800 mb-1">Sets</label>
+                            <input type="number" id="ex3-sets" name="ex3Sets" min="1" max="20" value="4"
+                                class="w-full bg-white border border-gray-400 rounded-xl px-2.5 py-1.5 text-center font-bold text-gray-900 min-h-[44px] focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-900">
+                        </div>
+                        <div class="w-24">
+                            <label for="ex3-reps" class="block text-xs font-bold text-gray-800 mb-1">Target Reps</label>
+                            <input type="number" id="ex3-reps" name="ex3Reps" min="1" max="100" value="12"
+                                class="w-full bg-white border border-gray-400 rounded-xl px-2.5 py-1.5 text-center font-bold text-gray-900 min-h-[44px] focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-900">
+                        </div>
+                        <div class="w-24">
+                            <label for="ex3-rest" class="block text-xs font-bold text-gray-800 mb-1">Rest (sec)</label>
+                            <input type="number" id="ex3-rest" name="ex3Rest" min="0" max="600" step="15" value="60"
+                                class="w-full bg-white border border-gray-400 rounded-xl px-2.5 py-1.5 text-center font-bold text-gray-900 min-h-[44px] focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-900">
+                        </div>
+                        <button type="button" aria-label="Remove Standing Cable Lateral Raise from routine"
+                            class="bg-gray-300 hover:bg-gray-400 text-gray-900 p-2 min-h-[44px] min-w-[44px] inline-flex items-center justify-center rounded-xl font-bold transition focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-900">
+                            ✕
+                        </button>
+                    </div>
+                </li>
+
+                <!-- Exercise 4 -->
+                <li class="bg-gray-100 p-4 md:p-5 rounded-2xl border border-gray-400 shadow-sm flex flex-col md:flex-row md:items-center justify-between gap-4">
+                    <div class="flex items-center space-x-3 flex-1">
+                        <button type="button" aria-label="Reorder Tricep Rope Pushdown"
+                            class="text-xl text-gray-600 hover:text-gray-900 p-2 min-h-[44px] min-w-[44px] inline-flex items-center justify-center cursor-grab focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-900 rounded-lg">
+                            <span aria-hidden="true">⠿</span>
+                        </button>
+                        <div>
+                            <div class="flex items-center gap-2">
+                                <span class="text-xs font-bold bg-gray-300 text-gray-900 px-2 py-0.5 rounded-full">#4</span>
+                                <h3 class="text-base md:text-lg font-bold text-gray-900">Tricep Rope Pushdown</h3>
+                                <span class="text-xs font-bold bg-gray-300 text-gray-800 px-2.5 py-0.5 rounded-full">Triceps</span>
+                            </div>
+                            <p class="text-xs text-gray-700 mt-0.5">Triceps lateral and medial head lockout focus.</p>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-wrap items-end gap-3 pt-2 md:pt-0 border-t md:border-t-0 border-gray-300">
+                        <div class="w-20">
+                            <label for="ex4-sets" class="block text-xs font-bold text-gray-800 mb-1">Sets</label>
+                            <input type="number" id="ex4-sets" name="ex4Sets" min="1" max="20" value="3"
+                                class="w-full bg-white border border-gray-400 rounded-xl px-2.5 py-1.5 text-center font-bold text-gray-900 min-h-[44px] focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-900">
+                        </div>
+                        <div class="w-24">
+                            <label for="ex4-reps" class="block text-xs font-bold text-gray-800 mb-1">Target Reps</label>
+                            <input type="number" id="ex4-reps" name="ex4Reps" min="1" max="100" value="12"
+                                class="w-full bg-white border border-gray-400 rounded-xl px-2.5 py-1.5 text-center font-bold text-gray-900 min-h-[44px] focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-900">
+                        </div>
+                        <div class="w-24">
+                            <label for="ex4-rest" class="block text-xs font-bold text-gray-800 mb-1">Rest (sec)</label>
+                            <input type="number" id="ex4-rest" name="ex4Rest" min="0" max="600" step="15" value="60"
+                                class="w-full bg-white border border-gray-400 rounded-xl px-2.5 py-1.5 text-center font-bold text-gray-900 min-h-[44px] focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-900">
+                        </div>
+                        <button type="button" aria-label="Remove Tricep Rope Pushdown from routine"
+                            class="bg-gray-300 hover:bg-gray-400 text-gray-900 p-2 min-h-[44px] min-w-[44px] inline-flex items-center justify-center rounded-xl font-bold transition focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-900">
+                            ✕
+                        </button>
+                    </div>
+                </li>
+
+            </ol>
+
+            <!-- Action Buttons: Save & Cancel -->
+            <div class="flex flex-col sm:flex-row items-center justify-end gap-3 pt-4 border-t border-gray-400">
+                <button type="button"
+                    class="w-full sm:w-auto bg-gray-400 hover:bg-gray-500 text-black px-6 py-2.5 rounded-full font-bold text-sm transition min-h-[44px] focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-900">
+                    Cancel
+                </button>
+                <button type="button"
+                    class="w-full sm:w-auto bg-gray-800 hover:bg-gray-900 text-white px-8 py-2.5 rounded-full font-bold text-sm transition shadow min-h-[44px] focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-900">
+                    Save Routine
+                </button>
+            </div>
+        </section>
+
+        <!-- Saved Routines Section -->
+        <section aria-labelledby="saved-routines-heading" class="space-y-4">
+            <div class="flex items-center justify-between">
+                <h2 id="saved-routines-heading" class="text-xl md:text-2xl font-bold text-gray-900">
+                    Saved Workout Routines
+                </h2>
+                <span class="text-xs font-bold text-gray-700 bg-gray-300 px-3 py-1 rounded-full">3 Routines</span>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+                <!-- Card 1 -->
+                <article class="bg-gray-300 p-6 rounded-3xl space-y-4 flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between mb-2">
+                            <span class="text-xs font-bold bg-gray-400 text-black px-2 py-0.5 rounded-full">Monday</span>
+                            <span class="text-xs font-bold text-gray-700">~60 min</span>
+                        </div>
+                        <h3 class="text-lg font-bold text-gray-900">Push Day Hypertrophy</h3>
+                        <p class="text-xs text-gray-700 mt-1">4 exercises • 14 total sets • Chest, shoulders, triceps.</p>
+                    </div>
+                    <div class="flex gap-2 pt-2 border-t border-gray-400">
+                        <a href="routine-builder.html"
+                            class="flex-1 text-center bg-gray-400 hover:bg-gray-500 text-black py-2 rounded-full font-semibold text-xs transition min-h-[44px] inline-flex items-center justify-center focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-900">
+                            Edit
+                        </a>
+                        <a href="active-workout.html"
+                            class="flex-1 text-center bg-gray-800 hover:bg-gray-900 text-white py-2 rounded-full font-bold text-xs transition min-h-[44px] inline-flex items-center justify-center focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-900">
+                            Start
+                        </a>
+                    </div>
+                </article>
+
+                <!-- Card 2 -->
+                <article class="bg-gray-300 p-6 rounded-3xl space-y-4 flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between mb-2">
+                            <span class="text-xs font-bold bg-gray-400 text-black px-2 py-0.5 rounded-full">Tuesday</span>
+                            <span class="text-xs font-bold text-gray-700">~75 min</span>
+                        </div>
+                        <h3 class="text-lg font-bold text-gray-900">Pull Day Strength</h3>
+                        <p class="text-xs text-gray-700 mt-1">5 exercises • 18 total sets • Deadlifts, rows, pull-ups, biceps.</p>
+                    </div>
+                    <div class="flex gap-2 pt-2 border-t border-gray-400">
+                        <a href="routine-builder.html"
+                            class="flex-1 text-center bg-gray-400 hover:bg-gray-500 text-black py-2 rounded-full font-semibold text-xs transition min-h-[44px] inline-flex items-center justify-center focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-900">
+                            Edit
+                        </a>
+                        <a href="active-workout.html"
+                            class="flex-1 text-center bg-gray-800 hover:bg-gray-900 text-white py-2 rounded-full font-bold text-xs transition min-h-[44px] inline-flex items-center justify-center focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-900">
+                            Start
+                        </a>
+                    </div>
+                </article>
+
+                <!-- Card 3 -->
+                <article class="bg-gray-300 p-6 rounded-3xl space-y-4 flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between mb-2">
+                            <span class="text-xs font-bold bg-gray-400 text-black px-2 py-0.5 rounded-full">Thursday</span>
+                            <span class="text-xs font-bold text-gray-700">~70 min</span>
+                        </div>
+                        <h3 class="text-lg font-bold text-gray-900">Legs &amp; Core Blast</h3>
+                        <p class="text-xs text-gray-700 mt-1">6 exercises • 20 total sets • Squats, RDLs, leg press, abs.</p>
+                    </div>
+                    <div class="flex gap-2 pt-2 border-t border-gray-400">
+                        <a href="routine-builder.html"
+                            class="flex-1 text-center bg-gray-400 hover:bg-gray-500 text-black py-2 rounded-full font-semibold text-xs transition min-h-[44px] inline-flex items-center justify-center focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-900">
+                            Edit
+                        </a>
+                        <a href="active-workout.html"
+                            class="flex-1 text-center bg-gray-800 hover:bg-gray-900 text-white py-2 rounded-full font-bold text-xs transition min-h-[44px] inline-flex items-center justify-center focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-900">
+                            Start
+                        </a>
+                    </div>
+                </article>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer (matching teammates' shell) -->
+    <footer class="bg-gray-300 py-4 text-center text-sm font-semibold text-gray-800">
+        <p>&copy; 2026 FitnessPlanner</p>
+    </footer>
+
+</body>
+
+</html>

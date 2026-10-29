@@ -1,0 +1,1 @@
+https://www.figma.com/design/V11DzxsGsIcneKCq4tymCh/Landing--login--register--exercise-pages?node-id=35-156&p=f&t=vOmYzJYwL6HcFCl3-0
